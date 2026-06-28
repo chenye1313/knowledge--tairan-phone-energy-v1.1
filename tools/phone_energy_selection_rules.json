@@ -1,0 +1,188 @@
+{
+  "version": "0.2",
+  "scope": "Selection-design rules for phone number candidates. This file does not define fixed pair fields.",
+  "source_level": "D supplemental source plus v0.4 governance rules",
+  "modes": {
+    "structure_observation": {
+      "requires_bazi_yongshen": false,
+      "allows_online_search": false,
+      "description": "Analyze an existing phone number structure only."
+    },
+    "full_matching": {
+      "requires_bazi_yongshen": false,
+      "allows_online_search": false,
+      "description": "Match existing phone structure with user context."
+    },
+    "selection_design": {
+      "requires_bazi_yongshen": true,
+      "allows_online_search": true,
+      "description": "Design candidate phone-number structures for a user goal. If bazi_yongshen is missing, resolve it through user input, an external bazi tool, or public web reference before selecting tail digits."
+    }
+  },
+  "bazi_yongshen_resolution": {
+    "applies_to": "selection_design_only",
+    "online_required_if_missing": true,
+    "required_inputs": ["birth_datetime", "birth_place", "calendar_type", "gender"],
+    "allowed_methods": ["user_provided_yongshen", "approved_external_bazi_tool", "public_web_bazi_reference"],
+    "status_values": ["user_provided", "tool_calculated", "public_web_reference", "missing", "unavailable"],
+    "rules": [
+      "Use user-provided bazi_yongshen directly and mark status as user_provided.",
+      "If bazi_yongshen is missing and search_allowed is true, use an external bazi tool or public web reference to resolve yongshen before tail digit design.",
+      "If bazi_yongshen is missing and online/tool access is unavailable, do not infer yongshen; request user-provided yongshen or provide only non-bazi structural guidance.",
+      "Bazi yongshen may guide tail digits only in selection design; it must not alter fixed phone pair maps or ordinary number observation.",
+      "Always return a source note and boundary note."
+    ]
+  },
+  "yongshen_tail_digits": {
+    "fire": {
+      "preferred": ["9"],
+      "fallback": [],
+      "note": "Use 9 as the primary fire tail digit."
+    },
+    "water": {
+      "preferred": ["1"],
+      "fallback": [],
+      "note": "Use 1 as the primary water tail digit."
+    },
+    "earth": {
+      "preferred": ["8"],
+      "fallback": ["2"],
+      "note": "Prefer 8; 2 is lower priority because it often constrains the final pair to small tianyi structures."
+    },
+    "metal": {
+      "preferred": ["6"],
+      "fallback": ["7"],
+      "note": "Prefer 6; 7 can carry speech/conflict signals and should be used with care."
+    },
+    "wood": {
+      "preferred": ["3"],
+      "fallback": ["4"],
+      "note": "Prefer 3; 4 can carry hesitation/repetition signals and should be buffered."
+    }
+  },
+  "role_flows": {
+    "sales": {
+      "label": "销售/表达/讲师",
+      "preferred_flow": ["祸害", "天医"],
+      "purpose": "表达、口才、成交转稳定收入",
+      "avoid": ["祸害结尾", "祸害连凶"]
+    },
+    "investment": {
+      "label": "投资/资产/创业魄力",
+      "preferred_flow": ["绝命", "天医"],
+      "purpose": "投入、行动、资产动作被财库承接",
+      "avoid": ["绝命结尾", "天医到绝命收尾", "大绝命无承接"]
+    },
+    "creative_education": {
+      "label": "创意/教育/策划",
+      "preferred_flow": ["五鬼", "天医"],
+      "purpose": "思考、创意、方案转收益",
+      "avoid": ["五鬼连五鬼", "五鬼连绝命", "尾部五鬼无承接"]
+    },
+    "management_operations": {
+      "label": "管理/运营/企业经营",
+      "preferred_flow": ["延年", "天医"],
+      "purpose": "能力、责任、管理转财富承接",
+      "avoid": ["大延年过多", "大延年夹5"]
+    },
+    "design_service": {
+      "label": "设计/客服/审美服务",
+      "preferred_flow": ["六煞", "天医"],
+      "purpose": "关系、人缘、审美服务转收益",
+      "avoid": ["六煞过多", "六煞连凶"]
+    },
+    "network_resources": {
+      "label": "贵人来财/资源整合",
+      "preferred_flow": ["生气", "天医"],
+      "purpose": "贵人、人脉、机会转财富承接",
+      "avoid": ["生气过多无承接", "生气到绝命"]
+    }
+  },
+  "age_group_rules": {
+    "adult": {
+      "preferred": ["天医收尾", "职业动态被天医承接"],
+      "avoid": ["凶星尾部连片", "大绝命无承接", "大五鬼无承接"]
+    },
+    "elder": {
+      "preferred": ["生气加小延年", "整体吉星为主", "低强度凶星少量可用"],
+      "avoid": ["大绝命", "大五鬼", "大天医重复", "女性大延年"]
+    },
+    "child": {
+      "preferred": ["小五鬼加延年", "小五鬼加生气", "生气缓冲压力"],
+      "avoid": ["大延年", "大绝命", "大五鬼", "持续加压结构"]
+    }
+  },
+  "design_constraints": {
+    "avoid_zero": {
+      "rule": "Selection candidates should avoid 0 when possible.",
+      "severity": "medium"
+    },
+    "five_between_risk_fields": {
+      "rule": "Avoid A5B when the outer AB is a risk field such as 五鬼, 祸害, 绝命, or 六煞.",
+      "examples": ["158", "157"],
+      "severity": "high"
+    },
+    "five_between_big_yannian": {
+      "rule": "Use caution with big yannian amplified by 5.",
+      "examples": ["159", "951"],
+      "severity": "medium"
+    },
+    "duplicate_big_tianyi": {
+      "rule": "Avoid stacking multiple big tianyi structures such as 13/31 plus 68/86 in the final design.",
+      "severity": "medium"
+    },
+    "risk_field_count": {
+      "rule": "Risk fields should usually not exceed 3 and must be clearly carried by auspicious fields.",
+      "max_recommended": 3,
+      "severity": "medium"
+    },
+    "special_95_59": {
+      "rule": "95/59 is a supplemental-source special yannian口径 only; do not add it to fixed pair maps.",
+      "severity": "high"
+    }
+  },
+  "preferred_prefix_notes": {
+    "source_status": "supplemental_preference_only",
+    "preferred_examples": ["139", "136", "138", "137", "135", "186", "188"],
+    "caution_examples": ["130", "147"],
+    "boundary": "Prefix preferences require public availability or carrier verification and are not deterministic fate rules."
+  },
+  "function_contract": {
+    "operation_id": "design_phone_number_candidates",
+    "inputs": [
+      "birth_datetime",
+      "birth_place",
+      "calendar_type",
+      "bazi_yongshen",
+      "bazi_yongshen_status",
+      "gender",
+      "age_group",
+      "role",
+      "goal",
+      "current_phone",
+      "city",
+      "carrier",
+      "preferred_prefixes",
+      "search_allowed",
+      "candidate_count"
+    ],
+    "outputs": [
+      "bazi_yongshen_status",
+      "bazi_source_note",
+      "tail_digit_logic",
+      "recommended_tail4_or_tail5",
+      "full_number_examples",
+      "risk_flags",
+      "availability_status",
+      "explanation",
+      "boundary_note"
+    ],
+    "availability_status_values": [
+      "not_checked",
+      "public_signal_only",
+      "needs_human_verification",
+      "unavailable_signal"
+    ]
+  },
+  "boundary_note": "Selection candidates are auxiliary matching suggestions. They do not guarantee wealth, health, marriage, legal, investment, financial, inventory, or purchase outcomes."
+}

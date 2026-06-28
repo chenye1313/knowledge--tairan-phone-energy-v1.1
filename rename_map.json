@@ -1,0 +1,37 @@
+[
+  {
+    "target": "knowledge/03-八星磁场完整规则.md",
+    "operation_id": "readFixedRules",
+    "use_existing_file": true
+  },
+  {
+    "target": "knowledge/05-排盘计算与七步判断流程.md",
+    "operation_id": "readCalculationFlow",
+    "use_existing_file": true
+  },
+  {
+    "target": "knowledge/07-选号设计全规则.md",
+    "operation_id": "readSelectionDesign",
+    "use_existing_file": true
+  },
+  {
+    "target": "knowledge/10-Agent函数接口与RAG路由.md",
+    "operation_id": "readRoutingAndInterfaces",
+    "use_existing_file": true
+  },
+  {
+    "target": "knowledge/11-质量门与风险改写表.md",
+    "operation_id": "readQualityGate",
+    "use_existing_file": true
+  },
+  {
+    "target": "knowledge/12-泰然老师话语体系与表达DNA.md",
+    "operation_id": "readTairanVoice",
+    "use_existing_file": true
+  },
+  {
+    "target": "source-index.md",
+    "operation_id": "readSourceIndex",
+    "use_existing_file": true
+  }
+]

@@ -1,0 +1,88 @@
+{
+  "version": "0.2",
+  "scope": "Chinese mainland 11-digit mobile phone number, focus on last 8 digits",
+  "digit_set_for_pair_fields": ["1", "2", "3", "4", "6", "7", "8", "9"],
+  "priority": ["tail4", "tail3", "tail2", "middle", "front"],
+  "fields": {
+    "tianyi": {
+      "label": "天医",
+      "polarity": "auspicious",
+      "theme": "正财、财库、稳定收入、善良、正桃花",
+      "strength_groups": [["13", "31"], ["68", "86"], ["49", "94"], ["27", "72"]]
+    },
+    "shengqi": {
+      "label": "生气",
+      "polarity": "auspicious",
+      "theme": "贵人、人缘、机会、开朗、贵人来财",
+      "strength_groups": [["14", "41"], ["67", "76"], ["39", "93"], ["28", "82"]]
+    },
+    "yannian": {
+      "label": "延年",
+      "polarity": "auspicious_with_pressure",
+      "theme": "领导力、事业、责任、专业、压力、体能",
+      "strength_groups": [["19", "91"], ["78", "87"], ["34", "43"], ["26", "62"]]
+    },
+    "jueming": {
+      "label": "绝命",
+      "polarity": "risk_with_usable_drive",
+      "theme": "魄力、投资、资产、行动、风险、现金流波动",
+      "strength_groups": [["12", "21"], ["69", "96"], ["48", "84"], ["37", "73"]]
+    },
+    "wugui": {
+      "label": "五鬼",
+      "polarity": "risk_with_creativity",
+      "theme": "创意、策划、灵性、思考、熬夜、多疑",
+      "strength_groups": [["18", "81"], ["79", "97"], ["36", "63"], ["24", "42"]]
+    },
+    "liusha": {
+      "label": "六煞",
+      "polarity": "risk_with_relationship_use",
+      "theme": "人缘、魅力、审美、异性缘、情绪",
+      "strength_groups": [["16", "61"], ["47", "74"], ["38", "83"], ["29", "92"]]
+    },
+    "huohai": {
+      "label": "祸害",
+      "polarity": "risk_with_expression_use",
+      "theme": "口才、表达、成交、口舌是非",
+      "strength_groups": [["17", "71"], ["89", "98"], ["46", "64"], ["23", "32"]]
+    },
+    "fuwei": {
+      "label": "伏位",
+      "polarity": "continuation",
+      "theme": "延续、重复、随前一磁场强化",
+      "strength_groups": [["11", "22"], ["99", "88"], ["77", "66"], ["44", "33"]]
+    }
+  },
+  "special_digits": {
+    "0": {
+      "label": "0",
+      "role": "空、阻断、隐藏、落空",
+      "tail_rule": "尾号0视为结果位收口弱或落空提示，不作确定性灾断",
+      "middle_rule": "A0B结构查外层AB，并判定0对外层磁场有阻断、隐藏、压制或沟通不畅作用"
+    },
+    "5": {
+      "label": "5",
+      "role": "中宫、放大、加持、阻碍、延续、变数",
+      "tail_rule": "尾号5视为前一磁场延续、拖延或变数提示",
+      "middle_rule": "A5B结构查外层AB，并判定5对外层磁场有放大、加持、阻碍或路径依赖作用"
+    }
+  },
+  "known_triplets": {
+    "913": {"flow": ["延年", "天医"], "interpretation": "靠能力、管理、运营来财", "source_status": "explicit"},
+    "413": {"flow": ["生气", "天医"], "interpretation": "贵人来财", "source_status": "explicit"},
+    "672": {"flow": ["生气", "天医"], "interpretation": "贵人来财，小财口径", "source_status": "explicit"},
+    "768": {"flow": ["生气", "天医"], "interpretation": "贵人来财，财力较大", "source_status": "explicit"},
+    "312": {"flow": ["天医", "绝命"], "interpretation": "钱投出去，回流弱", "source_status": "explicit"},
+    "213": {"flow": ["绝命", "天医"], "interpretation": "投资后能转化回财", "source_status": "explicit"},
+    "219": {"flow": ["绝命", "延年"], "interpretation": "投资、资产或行动转事业/固定资产承接", "source_status": "explicit"},
+    "126": {"flow": ["绝命", "延年"], "interpretation": "小资产、小房子或小承接", "source_status": "explicit"},
+    "731": {"flow": ["绝命", "天医"], "interpretation": "小绝命配大天医，投入与回收更匹配", "source_status": "explicit"},
+    "127": {"flow": ["绝命", "天医"], "interpretation": "大绝命配小天医，投入与回收不成比例", "source_status": "explicit"},
+    "786": {"flow": ["延年", "天医"], "interpretation": "靠领导力、能力来财", "source_status": "explicit"},
+    "286": {"flow": ["生气", "天医"], "interpretation": "靠贵人、人脉来财", "source_status": "explicit"},
+    "378": {"flow": ["绝命", "延年"], "interpretation": "魄力、投资、决心转事业能力", "source_status": "explicit"},
+    "478": {"flow": ["六煞", "延年"], "interpretation": "人际、关系、魅力转事业能力", "source_status": "explicit"}
+  },
+  "ai_boundary": "Use this file for deterministic plate calculation. Interpretations remain auxiliary observations, not fate, medical, legal, investment, finance, or marriage judgments."
+}
+
